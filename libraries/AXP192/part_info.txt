@@ -1,0 +1,9 @@
+Manufacturer=X-Powers
+PartNumber=AXP192
+PartCategory=Integrated Circuit
+PackageCategory=Quad Flat No-Lead
+PinCount=49
+Version=1.1
+Released=2020-03-06 10:24:25
+Downloaded=2024-06-03 11:45:30
+3D=Y
