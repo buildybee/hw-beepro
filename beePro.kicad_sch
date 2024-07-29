@@ -1,33 +1,32 @@
 (kicad_sch
-	(version 20240417)
+	(version 20240602)
 	(generator "eeschema")
 	(generator_version "8.99")
 	(uuid "1e4176f2-cb6f-4918-84e5-32338c0da2e5")
 	(paper "A4")
+	(title_block
+		(title "BEEPRO")
+		(date "2024-07-07")
+		(rev "v1.0")
+		(company "Buildybee")
+	)
 	(lib_symbols)
-	(text "https://www.ti.com/lit/ds/symlink/tps73633-ep.pdf?ts=1716467232035&ref_url=https%253A%252F%252Fwww.google.com%252F"
+	(text "NOT USING IN V1.0"
 		(exclude_from_sim no)
-		(at 85.09 154.94 0)
+		(at 39.624 174.244 0)
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 2.54 2.54)
+				(thickness 0.508)
+				(bold yes)
+				(color 255 0 0 1)
 			)
 		)
-		(uuid "88e28d20-98fb-4556-9dce-de0ef9afb246")
+		(uuid "9bdd7a2b-31c0-40b9-8f46-ba8415620d90")
 	)
-	(text "https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf"
+	(text_box "20 Mhz oscillator"
 		(exclude_from_sim no)
-		(at 66.802 150.114 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "f7633bfe-0e37-4f44-8f47-472331279cef")
-	)
-	(text_box "smd microphone"
-		(exclude_from_sim no)
-		(at 97.79 133.35 0)
+		(at 97.79 124.46 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -43,52 +42,11 @@
 			)
 			(justify left top)
 		)
-		(uuid "065eb147-85c2-4604-828b-f0b5ddd95e39")
+		(uuid "08b59876-8922-417d-b94e-7a98b54f8253")
 	)
-	(text_box "Power"
+	(text_box "OV2640"
 		(exclude_from_sim no)
-		(at 182.88 127 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-				(color 255 18 31 1)
-			)
-			(justify left top)
-		)
-		(uuid "078fa626-49fe-4c6e-b388-6410c3271429")
-	)
-	(text_box "WS2812B-2020"
-		(exclude_from_sim no)
-		(at 21.59 125.73 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "0de5cbea-88ac-45d1-9888-233bb1fe4e2a")
-	)
-	(text_box "OV7670 0.3MP camera"
-		(exclude_from_sim no)
-		(at 182.88 86.36 0)
+		(at 21.59 93.98 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -105,6 +63,46 @@
 			(justify left top)
 		)
 		(uuid "133f9b43-9e53-49e3-b91b-3696187d3095")
+	)
+	(text_box "2.8V LDO"
+		(exclude_from_sim no)
+		(at 97.79 139.7 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "134286cf-6ee3-4415-8914-0d14a12e9b2b")
+	)
+	(text_box "MIC5504-2.8YM5"
+		(exclude_from_sim no)
+		(at 21.59 139.7 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "161adceb-a553-41dc-915d-e7668061f363")
 	)
 	(text_box "BeePro Components list"
 		(exclude_from_sim no)
@@ -127,9 +125,29 @@
 		)
 		(uuid "19f8abc5-5372-40eb-83ba-eece91cf2f44")
 	)
-	(text_box "VCNL4040M3OE"
+	(text_box "USB C"
 		(exclude_from_sim no)
-		(at 21.59 101.6 0)
+		(at 21.59 162.56 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "1c0b8040-47c1-470c-ae4e-9c0e8b0707b3")
+	)
+	(text_box "VEML7700"
+		(exclude_from_sim no)
+		(at 21.59 71.12 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -147,9 +165,9 @@
 		)
 		(uuid "1c65bb11-2edd-431a-b8b7-0d97d28394f3")
 	)
-	(text_box "micro sd slot"
+	(text_box "20 MHz"
 		(exclude_from_sim no)
-		(at 182.88 118.11 0)
+		(at 21.59 124.46 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -165,11 +183,11 @@
 			)
 			(justify left top)
 		)
-		(uuid "1d4d46b0-874b-4156-a21d-a958d7ebf982")
+		(uuid "1fd2219b-84ba-4cc6-8839-b4b337fe26a1")
 	)
-	(text_box "usb c"
+	(text_box "Micro sd card slot"
 		(exclude_from_sim no)
-		(at 182.88 40.64 0)
+		(at 97.79 154.94 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -185,11 +203,31 @@
 			)
 			(justify left top)
 		)
-		(uuid "231f49f0-f8a3-402d-9e1a-27bb59c1bd68")
+		(uuid "20b9e4e7-2cd4-4650-b018-68eff61bc3d2")
+	)
+	(text_box "I2S Microphone"
+		(exclude_from_sim no)
+		(at 97.79 184.15 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "243e3d7c-3559-40ba-a998-29b3e6cfaafc")
 	)
 	(text_box "rtc"
 		(exclude_from_sim no)
-		(at 97.79 55.88 0)
+		(at 97.79 78.74 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -207,9 +245,9 @@
 		)
 		(uuid "267e1ad8-abd8-4907-a22a-46b5d7c2a7cb")
 	)
-	(text_box "ADC"
+	(text_box "5V current limiter"
 		(exclude_from_sim no)
-		(at 97.79 86.36 0)
+		(at 97.79 116.84 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -249,7 +287,7 @@
 	)
 	(text_box "light sensor"
 		(exclude_from_sim no)
-		(at 97.79 101.6 0)
+		(at 97.79 71.12 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -267,9 +305,9 @@
 		)
 		(uuid "345120b1-23e8-47e3-8459-a2b2967c2868")
 	)
-	(text_box "MAX98357A"
+	(text_box "TSA2505"
 		(exclude_from_sim no)
-		(at 21.59 71.12 0)
+		(at 21.59 176.53 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -287,9 +325,49 @@
 		)
 		(uuid "398018eb-f89b-470d-b29d-79e3e2e172b1")
 	)
-	(text_box "ADS1110"
+	(text_box "SD card"
 		(exclude_from_sim no)
-		(at 21.59 86.36 0)
+		(at 21.59 154.94 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "3e0e0ab3-a298-41e0-88a0-53a621e72e27")
+	)
+	(text_box "I2C to 4-GPIO expander"
+		(exclude_from_sim no)
+		(at 97.79 101.6 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "3f3b5429-d278-4174-8a6a-9829b8576214")
+	)
+	(text_box "NCP380HMU05AATBG"
+		(exclude_from_sim no)
+		(at 21.59 116.84 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -307,9 +385,9 @@
 		)
 		(uuid "495a59a4-eb00-4fbe-9227-0ef9651ca10a")
 	)
-	(text_box "HMC5883L"
+	(text_box "LIS2MDL"
 		(exclude_from_sim no)
-		(at 21.59 78.74 0)
+		(at 21.59 55.88 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -329,7 +407,7 @@
 	)
 	(text_box "MCP7940"
 		(exclude_from_sim no)
-		(at 21.59 55.88 0)
+		(at 21.59 78.74 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -367,27 +445,7 @@
 		)
 		(uuid "6770080e-ac87-424d-bef3-9f56f414a83c")
 	)
-	(text_box "1S 700mah"
-		(exclude_from_sim no)
-		(at 182.88 134.62 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "6c09d82c-6dbd-4c85-9003-58c173602790")
-	)
-	(text_box "IP5306"
+	(text_box "AXP192"
 		(exclude_from_sim no)
 		(at 21.59 40.64 0)
 		(size 76.2 7.62)
@@ -407,9 +465,9 @@
 		)
 		(uuid "6c0a1b1d-996f-483b-bfbe-a28a3aaf50fc")
 	)
-	(text_box "audio amplifier"
+	(text_box "I2S audio amplifier"
 		(exclude_from_sim no)
-		(at 97.79 71.12 0)
+		(at 97.79 176.53 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -427,9 +485,9 @@
 		)
 		(uuid "6c429cdc-fdd0-4c27-abd9-3f0557e3dd83")
 	)
-	(text_box "4013 microphone"
+	(text_box "32.768kHz"
 		(exclude_from_sim no)
-		(at 21.59 133.35 0)
+		(at 21.59 132.08 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -445,9 +503,69 @@
 			)
 			(justify left top)
 		)
-		(uuid "76e19fe5-bd7f-4014-ac57-db40ff24c0c1")
+		(uuid "748312df-d85b-4e41-b74a-5ad7238c8028")
 	)
-	(text_box "ESP32-WROOM-32(U)E-N16"
+	(text_box "2.0 screen"
+		(exclude_from_sim no)
+		(at 21.59 147.32 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "776b1a6a-bce9-4fae-9a34-dd767aa2a328")
+	)
+	(text_box "usb c with D+ and D-"
+		(exclude_from_sim no)
+		(at 97.79 162.56 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "77bb6293-d3ac-4d1a-ae89-b984555095f5")
+	)
+	(text_box "32.768kHz crystal for RTC"
+		(exclude_from_sim no)
+		(at 97.79 132.08 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "7d088e38-91b3-4caf-a8ad-0104b36b653c")
+	)
+	(text_box "ESP32-WROOM-1"
 		(exclude_from_sim no)
 		(at 97.79 33.02 0)
 		(size 76.2 7.62)
@@ -467,89 +585,9 @@
 		)
 		(uuid "8404bf6f-8d99-4053-84d0-48ae3e915bd4")
 	)
-	(text_box "4 pin PORT B"
-		(exclude_from_sim no)
-		(at 182.88 63.5 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "860f70d5-2c39-4412-8a58-a5fc9380939f")
-	)
-	(text_box "TPS73633DBVR"
-		(exclude_from_sim no)
-		(at 21.59 63.5 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "878100e1-55b7-4c58-8804-8ff680f2b7b6")
-	)
-	(text_box "tactile switch(on/off/reset)"
-		(exclude_from_sim no)
-		(at 182.88 33.02 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "883e6d5f-cfe4-47b7-93d2-67f6e7095eec")
-	)
-	(text_box "4 pin PORT C"
-		(exclude_from_sim no)
-		(at 182.88 71.12 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "885ae9fa-bf22-49aa-81b4-416e01d0d61e")
-	)
 	(text_box "3-axis magantometer"
 		(exclude_from_sim no)
-		(at 97.79 78.74 0)
+		(at 97.79 55.88 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -567,9 +605,9 @@
 		)
 		(uuid "8a788339-5a06-4d02-bb85-5570421f7891")
 	)
-	(text_box "weather sensor"
+	(text_box "Temp and Humid sensor"
 		(exclude_from_sim no)
-		(at 97.79 93.98 0)
+		(at 97.79 63.5 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -586,26 +624,6 @@
 			(justify left top)
 		)
 		(uuid "8b53fc06-0ef3-4038-8e7c-db3884d49071")
-	)
-	(text_box "i2c PORT A"
-		(exclude_from_sim no)
-		(at 182.88 55.88 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "8db39234-6abd-4d55-8ab7-40d80ae234d8")
 	)
 	(text_box "6-axis imu"
 		(exclude_from_sim no)
@@ -627,11 +645,11 @@
 		)
 		(uuid "9149a1e6-47bd-4ae2-b3e7-417ca9ae2068")
 	)
-	(text_box "2.0/2.4\" touch screen with TFT card"
+	(text_box "PCA9536D"
 		(exclude_from_sim no)
-		(at 182.88 78.74 0)
+		(at 21.59 101.6 0)
 		(size 76.2 7.62)
-		(margins 1.5 1.5 1.5 1.5)
+		(margins 2.25 2.25 2.25 2.25)
 		(stroke
 			(width 0)
 			(type default)
@@ -641,15 +659,15 @@
 		)
 		(effects
 			(font
-				(size 2 2)
+				(size 3 3)
 			)
 			(justify left top)
 		)
-		(uuid "97e4b0fe-8c2a-40e5-b22b-530db551c8cf")
+		(uuid "99803266-1513-41cf-b9fa-3d9703e2a52d")
 	)
 	(text_box "aht20"
 		(exclude_from_sim no)
-		(at 21.59 93.98 0)
+		(at 21.59 63.5 0)
 		(size 76.2 7.62)
 		(margins 2.25 2.25 2.25 2.25)
 		(stroke
@@ -667,149 +685,7 @@
 		)
 		(uuid "9ed2f84a-db34-462c-af83-e405c72b6cb2")
 	)
-	(text_box "2x20 2.54mm female header"
-		(exclude_from_sim no)
-		(at 182.88 48.26 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "a115b373-6749-48e4-ad2c-e9e877826897")
-	)
-	(text_box "uart programmer"
-		(exclude_from_sim no)
-		(at 96.52 167.64 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "b2b73d2d-d72b-4836-aba1-1ca9799ebae3")
-	)
-	(text_box "MT3608"
-		(exclude_from_sim no)
-		(at 21.59 109.22 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "ca5c29bd-ad5f-4f1b-b3b6-633fb6954668")
-	)
-	(text_box "BeePro i/o"
-		(exclude_from_sim no)
-		(at 182.88 25.4 0)
-		(size 77.47 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-				(color 255 18 31 1)
-			)
-			(justify left top)
-		)
-		(uuid "d26b92bb-2581-4a17-9c35-1cbc4e3bfdbf")
-	)
-	(text_box "Storage"
-		(exclude_from_sim no)
-		(at 182.88 110.49 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-				(color 255 18 31 1)
-			)
-			(justify left top)
-		)
-		(uuid "db500b7e-b1f4-4b7e-8c66-14d12816cf08")
-	)
-	(text_box "cp2102"
-		(exclude_from_sim no)
-		(at 20.32 167.64 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "e6aa1dcb-5270-4036-bec9-d0dbfd345854")
-	)
-	(text_box "speaker"
-		(exclude_from_sim no)
-		(at 182.88 93.98 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "ebed23d0-7401-44a9-984c-f404ebe36685")
-	)
-	(text_box "dc-dc boost"
+	(text_box "ESD protection"
 		(exclude_from_sim no)
 		(at 97.79 109.22 0)
 		(size 76.2 7.62)
@@ -827,9 +703,129 @@
 			)
 			(justify left top)
 		)
+		(uuid "9fb162cc-732b-48fa-b0a2-96d765eafcbd")
+	)
+	(text_box "MT3608"
+		(exclude_from_sim no)
+		(at 21.59 86.36 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "ca5c29bd-ad5f-4f1b-b3b6-633fb6954668")
+	)
+	(text_box "IM69D120"
+		(exclude_from_sim no)
+		(at 21.59 184.15 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "cd41ca24-c3db-4e00-8cf7-19e259144bab")
+	)
+	(text_box "usblc6-2"
+		(exclude_from_sim no)
+		(at 21.59 109.22 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "da135533-ac33-451d-9340-10192095ed3a")
+	)
+	(text_box "2MP camera"
+		(exclude_from_sim no)
+		(at 97.79 93.98 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "ebed23d0-7401-44a9-984c-f404ebe36685")
+	)
+	(text_box "dc-dc 5V boost"
+		(exclude_from_sim no)
+		(at 97.79 86.36 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
 		(uuid "f4b91cff-e79f-42c6-acd5-47a8201c01cc")
 	)
-	(text_box "BMI270/mpu6050"
+	(text_box "LCD touch screen"
+		(exclude_from_sim no)
+		(at 97.79 147.32 0)
+		(size 76.2 7.62)
+		(margins 2.25 2.25 2.25 2.25)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "f5d6d350-ab41-4393-a006-58f492ded83f")
+	)
+	(text_box "LSM6DS3"
 		(exclude_from_sim no)
 		(at 21.59 48.26 0)
 		(size 76.2 7.62)
@@ -849,57 +845,13 @@
 		)
 		(uuid "f9ad8aa8-fb9d-4e49-b3e7-03142f79b95f")
 	)
-	(text_box "3.3v 2A LDO"
-		(exclude_from_sim no)
-		(at 97.79 63.5 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "f9cfb9f2-8713-4d89-a6dc-d42ef6b23ef5")
-	)
-	(text_box "RGB led"
-		(exclude_from_sim no)
-		(at 97.79 125.73 0)
-		(size 76.2 7.62)
-		(margins 2.25 2.25 2.25 2.25)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "fdc4ce37-5fbb-404f-9c66-55e454c7b81f")
-	)
-	(no_connect
-		(at -90.17 -16.51)
-		(uuid "4d4d8f8b-9d63-4765-bd2e-ceb598973250")
-	)
-	(no_connect
-		(at 30.48 127)
-		(uuid "cf282cf1-e7f7-44bc-9219-4ad0e5e50e3a")
-	)
 	(sheet
-		(at -19.05 -88.9)
-		(size 38.1 46.99)
+		(at 304.8 17.78)
+		(size 12.7 3.81)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -910,7 +862,7 @@
 		)
 		(uuid "1f802ff1-4d76-42c9-b074-74b1f6dc0421")
 		(property "Sheetname" "sensors"
-			(at -19.05 -89.6116 0)
+			(at 304.8 17.0684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -919,7 +871,7 @@
 			)
 		)
 		(property "Sheetfile" "esp32s3.kicad_sch"
-			(at -19.05 -41.3254 0)
+			(at 304.8 22.1746 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -936,8 +888,12 @@
 		)
 	)
 	(sheet
-		(at 327.66 97.79)
+		(at 304.8 8.89)
 		(size 12.7 3.81)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -947,8 +903,8 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "39517bb8-70d7-4b4c-b98d-60743ce1eb72")
-		(property "Sheetname" "i2s_amp-spi_lcd_sdcard"
-			(at 327.66 97.0784 0)
+		(property "Sheetname" "peripherals"
+			(at 304.8 8.1784 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -957,7 +913,7 @@
 			)
 		)
 		(property "Sheetfile" "spi_lcd_sdcard.kicad_sch"
-			(at 327.66 102.1846 0)
+			(at 304.8 13.2846 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -974,8 +930,12 @@
 		)
 	)
 	(sheet
-		(at 0 226.06)
-		(size 300.99 199.39)
+		(at 304.8 26.67)
+		(size 12.7 3.81)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -985,8 +945,8 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "832fc0f6-f95e-4742-b994-f6ef2c1f7919")
-		(property "Sheetname" "esp32"
-			(at 0 225.3484 0)
+		(property "Sheetname" "mcu"
+			(at 304.8 25.9584 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -995,7 +955,7 @@
 			)
 		)
 		(property "Sheetfile" "Details.kicad_sch"
-			(at 0 426.0346 0)
+			(at 304.8 31.0646 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1012,8 +972,12 @@
 		)
 	)
 	(sheet
-		(at 313.69 33.02)
-		(size 12.7 26.67)
+		(at 303.53 0)
+		(size 12.7 3.81)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -1024,7 +988,7 @@
 		)
 		(uuid "c2e71558-3f8f-4c09-9d41-5190ec7e65de")
 		(property "Sheetname" "pwr_mgmt"
-			(at 313.69 32.3084 0)
+			(at 303.53 -0.7116 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1033,7 +997,7 @@
 			)
 		)
 		(property "Sheetfile" "pwr_mgmt.kicad_sch"
-			(at 313.69 60.2746 0)
+			(at 303.53 4.3946 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1045,44 +1009,6 @@
 			(project "beePro"
 				(path "/1e4176f2-cb6f-4918-84e5-32338c0da2e5"
 					(page "4")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 335.28 119.38)
-		(size 22.86 29.21)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "ccefb427-5cf0-47b2-ae59-5a00e5189bdc")
-		(property "Sheetname" "ports"
-			(at 335.28 118.6684 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "ports.kicad_sch"
-			(at 335.28 149.1746 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "beePro"
-				(path "/1e4176f2-cb6f-4918-84e5-32338c0da2e5"
-					(page "6")
 				)
 			)
 		)

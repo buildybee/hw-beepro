@@ -1,0 +1,201 @@
+Control and Operating
+When the AXP192 is working, the TWSI interface SCK/SDA pin is pulled up to the system IO power supply, and the Host can use this interface to control the AXP192
+The working status can be flexibly adjusted and monitored, and rich information can be obtained.
+Note: "Host" refers to the main processor of the application system.
+Note: The "external power supply" mentioned below includes ACIN and VBUS input.
+
+9.1 Working mode and reset (Power On/Off & Reset)
+
+Working mode button (PEK)
+A button can be connected between the PWRON pin of AXP192 and GND to serve as an independent power on/off key Power Enable Key (PEK)
+Or sleep/wake button. AXP192 can automatically recognize the "long press" and "short press" of this button and respond accordingly.
+
+
+Several power on sources (Power on Source)
+1. ACIN, VBUS and battery access.
+2. N_OE changes from high to low.
+3. PEK.
+
+Power On—Method A
+When the SYSEN pin is connected to LDO1, the AXP192 is in switching mode A.
+When N_OE is low, when the main power supply that meets the requirements (ACIN or VBUS>3.8V, the battery voltage is higher than the shutdown voltage) is connected, the AXP192
+It will automatically turn on (whether it will automatically turn on when the external power supply is connected can be rewritten according to external requirements).  
+When N_OE is low and in the shutdown state, the power-on action needs to be completed through PEK operation.
+In the presence of an external power supply or battery, a change in N_OE from high to low will also cause the AXP192 to power on.
+AXP192 can be powered on by PEK (key press time exceeds "ONLEVEL"). In practical applications, the Host’s timing (Alarm) output signal
+The signal can also be connected to PWRON in parallel with PEK. When the Alarm signal is active (low level), it is equivalent to pressing PEK. You can also connect AXP192
+Power on.
+After power on, the DC-DC and LDO will soft-start according to the set timing sequence. After the startup is completed, it can be managed by the Host or through PWREN.
+The pin turns the corresponding power on/off.
+
+Power Off—Method A
+When the PEK "long press" time is greater than IRQLEVEL, in the PEK interrupt service program, the Host can set the "register REG32H[7]"
+Write "1" to notify AXP192 to enter shutdown state. When AXP192 enters the shutdown state, all power outputs except LDO1 will be turned off.
+
+AXP192 will automatically shut down under the following conditions:
+1. The input voltage is too low, low power protection;
+2. Excessive load causes the output voltage of the power supply to be too low, overload protection;
+3. The input voltage is too high, overvoltage protection (see the "Power Path Management" chapter for details);
+4. N_OE changes from low to high, but does not shut down within the set time;
+5. When PEK is greater than OFFLEVEL (default 6S), the system automatically turns off other outputs except LDO1;
+The automatic protection mechanism of AXP192 can avoid irreversible damage to the powered device when the application system is abnormal, thereby protecting the entire
+system.
+Power On—Method B
+When the SYSEN pin is not connected to LDO1, AXP192 is in switching mode B.
+In power-on mode B, each power output is controlled by SYSEN/PWREN. When SYSEN/PWREN is high, its corresponding voltage
+The source path output is on, otherwise the output would be off.
+The difference from method A is that when each power-on source occurs, it will only generate a low-level pulse on the WAKEUP pin to notify the HOST
+Pull SYSEN/PWREN high to boot.
+Note: This method is envisioned for use in PXA series and processor applications with similar power management methods.
+
+Power Off—Method B
+For example, the shutdown source described in shutdown mode A, each shutdown mode will not directly turn off the output of AXP192 immediately, but in the N_LBO pipe.
+Generate a low level signal on the pin to notify the system to pull SYSEN/PWREN low to enter shutdown mode; if the system does not pull low within 2S
+SYSEN/PWREN, the AXP192 will automatically shut down; of course, HOST can also directly pull SYSEN/PWREN low to enter the corresponding shutdown mode.
+Note: Like power-on mode B, power-down mode B is also envisioned for use in PXA series and processor applications with similar power management methods.
+Note: Some processors are divided into sleep (Sleep, SYSEN/PWREN all the way is low, all the way is high) and deep sleep (Deep Sleep,
+SYSEN/PWREN are both low, all outputs except LDO1 are turned off) two modes.
+
+
+
+Sleep and wakeup
+When MannerA is turned on, if the system needs to enter Sleep mode and turn off one or more of the power supplies, then
+It can be controlled by REG31[3] to decide whether the wakeup is triggered by the PEK short press signal, allowing the PMU to restore the output power of each channel to REG31[3]
+When it is set to 1, the power supply of each channel is turned off in sequence according to the specified power-on sequence.
+The following is the control flow in Sleep and wakeup modes.
+
+Write 1 to REG31[3]
+Turn on the wake function,
+PMU record at this time
+REG12H settings
+
+
+Write 12H register,
+Turn off the corresponding power
+
+
+Sleep and wait
+PEK key press occurs
+
+N
+
+button?
+
+Y
+
+Power restored to
+REG31H[3] write 1
+state at the time
+
+
+
+
+
+System reset function and output monitoring function (PWROK/N_LBO)
+In switch mode A:
+The PWROK of AXP192 can be used as the reset signal of the application system. During the startup process of AXP192, PWROK outputs low level,
+When the output voltage of each power supply stabilizes and reaches the preset value, PWROK will be pulled high to achieve a power-on reset of the application system.
+During the normal operation of the application system, AXP192 always monitors the voltage and load conditions of each output, and automatically
+When the voltage is low, PWROK immediately outputs a low level to reset the application system to prevent malfunctions and possible data errors.
+In switch mode B:
+This pin serves as the N_LBO signal, and its low level is used to indicate that the system needs to enter shutdown mode. The specific function is the same as the shutdown mode B scan
+narrate.
+
+
+
+
+9.2 Power Path Management (IPS)
+The power input of AXP192 can come from lithium battery BAT, USB VBUS input, external power supply ACIN (such as AC adapter AC
+Adapter), IPS selects a suitable power distribution method based on the status of the external power supply and lithium battery.
+o When only the lithium battery is connected and there is no external power input, the lithium battery is used for power supply;
+o When connected to an external power supply (VBUS or ACIN), the external power supply is given priority;
+o With the battery connected, when the external power supply is removed, it will immediately switch to lithium battery power supply "seamlessly";
+o When both VBUS and ACIN are connected at the same time, ACIN is used first for power supply and charging of the lithium battery;
+o If the ACIN driving capability is insufficient at this time, the VBUS path will be opened in a timely manner to achieve ACIN/VBUS common power supply;
+o If the driving capability is still insufficient, the charging current will be reduced until 0, and then the battery will be used to supplement the power supply;
+
+
+9.3 Adaptive Charger
+AXP192 integrates a constant current/constant voltage charger that can automatically control the charging cycle, and the built-in safety clock can automatically stop charging
+without processor intervention. This charger can automatically adjust the charging current according to the system's power consumption, and also has battery detection, trickle charging and
+Activation function, the built-in temperature detection circuit can automatically reduce the charging current when the temperature is too high or too low.
+Initiation of the adaptive charging process
+The charger is enabled by default (can be turned off by setting the register, see "Register REG33H"). When external power is connected
+Finally, AXP192 first determines whether the external power supply can be used for charging. When the conditions for the external power supply to be available are met, and the charging function is turned on at this time,
+Then AXP192 automatically starts the charging process and sends an IRQ to the Host, indicating the start of the charging process. At the same time, the CHGLED pin outputs low level,
+Can drive external LEDs to indicate charging status.
+Charging process voltage and current diagram
+
+
+recharging current
+The charging current can be set through register REG33H[3:0], and the default value is 450mA or 780mA.
+Charging process
+If the battery voltage is lower than 3.0V, the charger automatically enters precharge mode and the charging current is 1/10 of the preset value. If within 40 minutes (this
+The time can be adjusted, see "Register REG34H"), the battery voltage still cannot reach 3.0V, the charger automatically enters the battery activation mode.
+See "Battery Activation Mode" for specific details.
+Once the battery voltage is higher than 3.0V, the charger begins to enter constant current mode. If the charging current is less than 65% of the preset value, the system will
+IRQ17 notifies that "the external power supply driving capability is insufficient. At this time, the charging current does not reach the set value, which will prolong the charging time. If you want to
+To fully charge the battery faster, it is recommended to replace it with a stronger power supply or turn off power-hungry functions."
+When the battery voltage reaches the target voltage VTRGT, the charger enters the constant voltage mode from the constant current mode and the charging current decreases.
+When the charging current is lower than 10% or 15% of the preset value (settable, see "Register REG33H"), the charging cycle ends and charging stops.
+When charging ends, AXP192 will send out IRQ18, and the CHGLED pin will stop indicating the charging status. When the battery voltage falls below VRCH again
+, it will automatically start recharging and issue IRQ17 at the same time.
+In non-precharge mode, if within 480 minutes (this time can be adjusted, see "Register REG34H"), the charging cycle is
+has ended, the charger will automatically enter battery activation mode.
+
+battery activated mode
+Regardless of entering battery activation mode from precharge mode or constant current charging mode (when the timer times out), AXP192 will issue
+IRQ10, indicating that the battery may be damaged.
+In the battery activation mode, the Charger always charges the battery with a smaller current. If the battery voltage can reach VRCH, it will exit.
+Activate mode while issuing IRQ11.
+AXP192 indicates in register REG01H whether the charger is in battery active mode.
+CHGLED
+The CHGLED pin is used to indicate charging status and alarm. It has four states: charging, not charging, battery abnormality alarm and external
+Power overvoltage alarm. CHGLED is an NMOS Open Drain output that can directly drive a current-limiting resistor through a current-limiting resistor.
+LEDs to display these four states. Its performance in each state is shown in the following table:
+low - not charging
+high - charging
+25, 1Hz -charging
+25% , 4Hz - overvoltage
+
+9.4 Backup Battery
+AXP192 supports the use and charging of backup batteries. When there is no main power supply (BAT/ACIN/VBUS), the LDO1 input source selects backup
+Battery, its output is used to maintain the operation of some circuits such as the system real-time clock.
+When the main power supply is present, the backup battery can be charged by setting REG35H[7]. Its target voltage defaults to 3.0V (can be set by
+REG35H[6:5] setting), the default charging current is 200uA (can also be set by REG35H[1:0]).
+
+
+IRQ(WAKEUP)
+When AXP192 is in power-on/off mode A, this pin serves as the IRQ status indication pin. When an interrupt occurs, its output is pulled low.
+Know HOST to perform interrupt processing and pull up to the system IO power supply.
+When AXP192 is in power-on/off mode B, this pin serves as a WAKEUP trigger signal indication and is pulled up to LDO1. Its specific function
+See instructions for power-on mode B.
+PWROK(N_LBO)
+In power-on mode A, it is the system reset signal (pulled up to the system IO power supply)
+, in switch mode B, it is the shutdown indication signal (upper
+Pulled to LDO1), see "System Reset Function and Output Monitoring Function" in "9.2 Power On and Off and Reset".
+9.9 Timer
+AXP192 contains an internal timer. The timer value can be changed by setting register REG8AH[6:0]. Its minimum resolution is minutes.
+(Minute), REG8AH[7] will be set after the timer times out.
+
+
+REG 31H: VOFF shutdown voltage setting
+
+default value
+
+7-4 is reserved and cannot be changed.
+3: PWRON short press wake-up function enable setting in 3Sleep mode:
+
+0: Short press to wake up function is turned off
+1: Short press to wake up function is turned on
+This bit is automatically cleared to 0 after writing, so it needs to be written to 1 again each time before entering Sleep mode.
+2VOFF setting Bit2
+1VOFF setting Bit1
+0VOFF Set Bit0
+000-2.6V; 001-2.7V; 010-2.8V;
+011-2.9V; 100-3.0V; 101-3.1V;
+110-3.2V; 111-3.3V
+RW0
+RW1
+RW1
+
